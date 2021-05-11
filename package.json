@@ -1,0 +1,40 @@
+{
+  "name": "typescript-action",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Fail a workflow if code scanning alerts exceed a threshold",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt",
+    "all": "npm run build && npm run format && npm run lint && npm run package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tspascoal/fail-workflow-on-alerts-action"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.7",
+    "@actions/github": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.2",
+    "@typescript-eslint/parser": "^4.23.0",
+    "@vercel/ncc": "^0.28.5",
+    "eslint": "^7.26.0",
+    "eslint-plugin-github": "^4.1.3",
+    "js-yaml": "^3.14.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
+  }
+}

@@ -1,0 +1,31 @@
+name: 'Fail Workflow on Alerts thresholds'
+description: 'Fail a orkflow if (open) security alerts exceed thresholds'
+author: 'Tiago Pascoal'
+inputs:
+  token:
+    required: true
+    description: Token
+    default: ${{ secrets.GITHUB_TOKEN }}
+  max_errors:
+    required: false
+    description: 'Fail if errors exceed this value (-1 to ignore)'
+    default: '-1'
+  max_warning:
+    required: false
+    description: 'Fail if warnings exceed this value (-1 to ignore)'
+    default: '-1'
+  max_note:
+    required: false
+    description: 'Fail if notes exceed this value (-1 to ignore)'
+    default: '-1'
+outputs:
+  error:
+      description: Number of open errors found
+  warning:
+      description: Number of open warnings found
+  note:
+      description: Number of open notes found
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
