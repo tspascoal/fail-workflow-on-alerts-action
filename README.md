@@ -6,7 +6,7 @@ This action will fail a workflow if there are open [Code Scanning](https://docs.
 
 It scans for open alerts in the current git reference. Be it a PR or a non PR
 
-Failure is optional, the action also outputs the number of alerts (by type) found.
+Failure is optional, the action also outputs the number of alerts (by type) found, the workflow will fail if the number `TYPE` alerts found is greater than `MAX_ALERT_TYPE`.
 
 ## Usage
 
