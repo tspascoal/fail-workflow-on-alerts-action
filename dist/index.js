@@ -82,11 +82,11 @@ function run() {
                 core.setOutput(key, alert_results[key]);
             }
             if (max_errors >= 0 && alert_results['error'] > max_errors)
-                core.setFailed(`${alert_results['error']}. ${alert_results['error']} error(s). exceeds the maximum number of allowed errors (${max_errors})`);
+                core.setFailed(`${alert_results['error']} open error(s) found. exceeds the maximum number of allowed errors (${max_errors})`);
             if (max_warnings >= 0 && alert_results['warning'] > max_warnings)
-                core.setFailed(`${alert_results['warning']} warning(s). Exceeds the maximum number of allowed warnings (${max_warnings})`);
+                core.setFailed(`${alert_results['warning']} open warning(s) found. Exceeds the maximum number of allowed warnings (${max_warnings})`);
             if (max_notes >= 0 && alert_results['note'] > max_notes)
-                core.setFailed(`${alert_results['note']} note(s). Exceeds the maximum number of allowed notes (${max_notes})`);
+                core.setFailed(`${alert_results['note']} open note(s) found. Exceeds the maximum number of allowed notes (${max_notes})`);
         }
         catch (error) {
             core.setFailed(error.message);
