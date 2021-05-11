@@ -24,9 +24,9 @@ async function run(): Promise<void> {
     const octokit = getOctokit(token)
     const reference = getRef(context)
 
-    core.debug(`Getting open alerts for reference ${reference}`)
+    core.info(`Getting open alerts for ref ${reference}`)
 
-    if (isPR(context)) {
+    if (!isPR(context)) {
       core.warning(
         'Not a pull request, data may not be completely accurate if running with an older SHA.'
       )

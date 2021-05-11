@@ -58,8 +58,8 @@ function run() {
             const max_notes = parseInt(core.getInput('max_notes') || '-1');
             const octokit = github_1.getOctokit(token);
             const reference = getRef(github_1.context);
-            core.debug(`Getting open alerts for reference ${reference}`);
-            if (isPR(github_1.context)) {
+            core.info(`Getting open alerts for ref ${reference}`);
+            if (!isPR(github_1.context)) {
                 core.warning('Not a pull request, data may not be completely accurate if running with an older SHA.');
             }
             const alerts = yield octokit.paginate(octokit.codeScanning.listAlertsForRepo, {

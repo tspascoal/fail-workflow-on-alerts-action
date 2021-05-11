@@ -10,11 +10,11 @@ inputs:
     required: false
     description: 'Fail if errors exceed this value (-1 to ignore)'
     default: '-1'
-  max_warning:
+  max_warnings:
     required: false
     description: 'Fail if warnings exceed this value (-1 to ignore)'
     default: '-1'
-  max_note:
+  max_notes:
     required: false
     description: 'Fail if notes exceed this value (-1 to ignore)'
     default: '-1'
