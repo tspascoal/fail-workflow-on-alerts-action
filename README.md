@@ -1,5 +1,7 @@
 # Fail workflow on alerts action
 
+![build-test](https://github.com/tspascoal/fail-workflow-on-alerts-action/actions/workflows/test.yml/badge.svg)
+
 > WARNING EXPERIMENTAL. Haven't completely tested all the semantics. Use at your own peril.
 
 This action will fail a workflow if there are open [Code Scanning](https://docs.github.com/en/code-security/secure-coding/about-code-scanning) that exceed the define thresholds. (eg: there are more than X critical alerts).
