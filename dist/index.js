@@ -71,9 +71,9 @@ function run() {
             });
             core.debug(`Received ${alerts.length} open alerts`);
             const alert_results = {};
-            alert_results['error'] = 0;
-            alert_results['warning'] = 0;
-            alert_results['note'] = 0;
+            alert_results.error = 0;
+            alert_results.warning = 0;
+            alert_results.note = 0;
             for (const alert of alerts) {
                 alert_results[alert.rule.severity]++;
             }
@@ -81,12 +81,12 @@ function run() {
                 core.info(`# ${key}(s): ${alert_results[key]}`);
                 core.setOutput(key, alert_results[key]);
             }
-            if (max_errors >= 0 && alert_results['error'] > max_errors)
-                core.setFailed(`${alert_results['error']} open error(s) found. exceeds the maximum number of allowed errors (${max_errors})`);
-            if (max_warnings >= 0 && alert_results['warning'] > max_warnings)
-                core.setFailed(`${alert_results['warning']} open warning(s) found. Exceeds the maximum number of allowed warnings (${max_warnings})`);
-            if (max_notes >= 0 && alert_results['note'] > max_notes)
-                core.setFailed(`${alert_results['note']} open note(s) found. Exceeds the maximum number of allowed notes (${max_notes})`);
+            if (max_errors >= 0 && alert_results.error > max_errors)
+                core.setFailed(`${alert_results.error} open error(s) found. exceeds the maximum number of allowed errors (${max_errors})`);
+            if (max_warnings >= 0 && alert_results.warning > max_warnings)
+                core.setFailed(`${alert_results.warning} open warning(s) found. Exceeds the maximum number of allowed warnings (${max_warnings})`);
+            if (max_notes >= 0 && alert_results.note > max_notes)
+                core.setFailed(`${alert_results.note} open note(s) found. Exceeds the maximum number of allowed notes (${max_notes})`);
         }
         catch (error) {
             core.setFailed(error.message);
