@@ -10,6 +10,8 @@ It scans for open alerts in the current git reference. Be it a PR or a non PR
 
 Failure is optional, the action also outputs the number of alerts (by type) found, the workflow will fail if the number `TYPE` alerts found is greater than `MAX_ALERT_TYPE`.
 
+> Known Issue: If action runs immediately after the SARIF file upload (either an action or the code scanning) the results may be delayed. Haven't fully determined the cause but it seems the processing of the SARIF file is asychronous. Try to run the action as later as possible.
+
 ## Usage
 
 ```YAML
