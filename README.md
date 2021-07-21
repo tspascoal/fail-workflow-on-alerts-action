@@ -30,6 +30,10 @@ Alternatively you can also configure the severity of [alerts that will issue a f
     echo number notes ${{ steps.alerts.outputs.note }}
 ```
 
+## Related actions
+
+In case you want to generate a nice PDF report with security finds you can use the [GitHub Security Report Action](https://github.com/marketplace/actions/github-security-report-action) action.
+
 ## License
 
 [MIT License](LICENSE)
