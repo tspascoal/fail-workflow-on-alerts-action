@@ -12,7 +12,7 @@ It scans for open alerts in the current git reference. Be it a PR or a non PR
 
 Failure is optional, the action also outputs the number of alerts (by type) found, the workflow will fail if the number `TYPE` alerts found is greater than `MAX_ALERT_TYPE`.
 
-> Known Issue: If action runs immediately after the SARIF file upload (either an action or the code scanning) the results may be delayed. Haven't fully determined the cause but it seems the processing of the SARIF file is asychronous. Try to run the action as later as possible.
+> ~~Known Issue: If action runs immediately after the SARIF file upload (either an action) the results may be delayed. Haven't fully determined the cause but it seems the processing of the SARIF file is asychronous. Try to run the action as later as possible.~~ This no longer happens unless you have set the parameter `wait-for-processing` to false. 
 
 Alternatively you can also configure the severity of [alerts that will issue a failed check](https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#defining-the-alert-severities-causing-pull-request-check-failure) and then combine this with branch protection rules to prevent pull requests from being completed.
 
