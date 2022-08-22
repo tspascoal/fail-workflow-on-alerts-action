@@ -25,6 +25,8 @@ Alternatively you can also configure the severity of [alerts that will issue a f
     max_errors: 10 # optional. Skip or -1 to ignore alerts
     max_warnings: 100 # optional. Skip or -1 to ignore alerts
     max_notes: 1000 # optional. Skip or -1 to ignore alerts
+    max_unknowns: 5 # optional. Skip or -1 to ignore alerts
+    max_none: 3 # optional. Skip or -1 to ignore alerts
 
 - run: |
     echo number errors ${{ steps.alerts.outputs.error }}
