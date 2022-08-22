@@ -20,6 +20,8 @@ async function run(): Promise<void> {
     const max_errors = parseInt(core.getInput('max_errors') || '-1')
     const max_warnings = parseInt(core.getInput('max_warnings') || '-1')
     const max_notes = parseInt(core.getInput('max_notes') || '-1')
+    const max_unknowns = parseInt(core.getInput('max_unknowns') || '-1')
+    const max_none = parseInt(core.getInput('max_none') || '-1')
 
     const octokit = getOctokit(token)
     const reference = getRef(context)
@@ -33,7 +35,7 @@ async function run(): Promise<void> {
     }
 
     const alerts = await octokit.paginate(
-      octokit.codeScanning.listAlertsForRepo,
+      octokit.rest.codeScanning.listAlertsForRepo,
       {
         owner: context.repo.owner,
         repo: context.repo.repo,
@@ -50,9 +52,11 @@ async function run(): Promise<void> {
     alert_results.error = 0
     alert_results.warning = 0
     alert_results.note = 0
+    alert_results.unknown = 0
+    alert_results.none = 0
 
     for (const alert of alerts) {
-      alert_results[alert.rule.severity]++
+      alert_results[alert.rule.severity || 'unknown']++
     }
 
     for (const key of Object.keys(alert_results)) {
@@ -72,8 +76,19 @@ async function run(): Promise<void> {
       core.setFailed(
         `${alert_results.note} open note(s) found. Exceeds the maximum number of allowed notes (${max_notes})`
       )
+    if (max_unknowns >= 0 && alert_results.unknown > max_unknowns)
+      core.setFailed(
+        `${alert_results.note} open unknown found. Exceeds the maximum number of allowed unkown  (${max_unknowns})`
+      )
+    if (max_none >= 0 && alert_results.none > max_none)
+      core.setFailed(
+        `${alert_results.note} open none found. Exceeds the maximum number of allowed none  (${max_none})`
+      )
   } catch (error) {
-    core.setFailed(error.message)
+    let message
+    if (error instanceof Error) message = error
+    else message = String(error)
+    core.setFailed(message)
   }
 }
 

@@ -18,6 +18,16 @@ inputs:
     required: false
     description: 'Fail if notes exceed this value (-1 to ignore)'
     default: '-1'
+  max_unknowns:
+    required: false
+    description: 'Fail if unknown exceed this value (-1 to ignore)'
+    default: '-1'
+  max_none:
+    required: false
+    description: 'Fail if alerts with none severity exceed this value (-1 to ignore)'
+    default: '-1'
+
+
 outputs:
   error:
       description: Number of open errors found
