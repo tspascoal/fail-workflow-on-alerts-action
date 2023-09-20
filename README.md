@@ -2,7 +2,7 @@
 
 ![build-test](https://github.com/tspascoal/fail-workflow-on-alerts-action/actions/workflows/test.yml/badge.svg)
 
-It is recommended that you [advanced-security-compliance](https://github.com/GeekMasher/advanced-security-compliance) instead, it is more feature rich than Fail workflow on alerts action
+It is recommended that you [advanced-security-compliance](https://github.com/advanced-security/policy-as-code) instead, it is more feature rich than Fail workflow on alerts action
 
 > WARNING EXPERIMENTAL. Haven't completely tested all the semantics. Use at your own peril.
 
