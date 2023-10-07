@@ -4,9 +4,10 @@
 
 It is recommended that you [advanced-security-compliance](https://github.com/advanced-security/policy-as-code) instead, it is more feature rich than Fail workflow on alerts action
 
-> WARNING EXPERIMENTAL. Haven't completely tested all the semantics. Use at your own peril.
+> [!WARNING]
+> EXPERIMENTAL. Haven't completely tested all the semantics. Use at your own peril.
 
-This action will fail a workflow if there are open [Code Scanning](https://docs.github.com/en/code-security/secure-coding/about-code-scanning) that exceed the define thresholds. (eg: there are more than X critical alerts).
+This action will fail a workflow if there are open [Code Scanning](https://docs.github.com/en/code-security/secure-coding/about-code-scanning) alerts that exceed the defined thresholds. (eg: there are more than X critical alerts).
 
 It scans for open alerts in the current git reference. Be it a PR or a non PR
 
